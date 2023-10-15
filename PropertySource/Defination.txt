@@ -1,0 +1,63 @@
+In Spring Framework, `PropertySources` is a mechanism that allows you to manage external configuration properties and make them available to your Spring application. It's part of the broader Spring framework's support for externalized configuration, which means you can store configuration properties outside of your application code and adjust them without modifying the code itself.
+
+Here's an overview of how `PropertySources` work in Spring
+
+1. PropertySources and PropertySource
+
+   - A `PropertySource` is an abstraction in Spring that represents a source of properties (key-value pairs). These properties can come from various sources, such as property files, environment variables, system properties, or custom sources.
+
+   - Spring provides built-in implementations of `PropertySource`, such as `ResourcePropertySource` for property files and `SystemEnvironmentPropertySource` for system environment variables.
+
+2. @PropertySource Annotation
+
+   - You can use the `@PropertySource` annotation to specify the location of a property file to be loaded into a `PropertySource`.
+
+   ```java
+   @Configuration
+   @PropertySource(classpathapplication.properties)
+   public class AppConfig {
+        Configuration code
+   }
+   ```
+
+   In this example, the `@PropertySource` annotation is used to load properties from the application.properties file.
+
+3. Environment and Property Resolution
+
+   - The `Environment` is a central component in Spring that provides access to property sources and manages property resolution.
+
+   - You can access properties from the `Environment` using the `@Value` annotation or programmatically through the `Environment` API.
+
+   ```java
+   @Value(${app.someProperty})
+   private String someProperty;
+   ```
+
+4. Profile-Specific Property Sources
+
+   - Spring allows you to define profile-specific property sources. You can have different property files or sources for different application profiles.
+
+   ```java
+   @Configuration
+   @Profile(dev)
+   @PropertySource(classpathapplication-dev.properties)
+   public class DevConfig {
+        Configuration code for the dev profile
+   }
+   ```
+
+   In this example, application-dev.properties is loaded only when the dev profile is active.
+
+5. Custom PropertySources
+
+   - You can create custom `PropertySource` implementations to load properties from custom sources, such as a database or a remote configuration service.
+
+   ```java
+   public class CustomPropertySource extends PropertySourceObject {
+        Custom property source implementation
+   }
+   ```
+
+   You would then register your custom `PropertySource` with the Spring `Environment`.
+
+Spring's `PropertySources` mechanism provides a flexible and powerful way to manage configuration properties in your Spring applications. It allows you to centralize and externalize configuration, making it easier to configure and maintain your applications across different environments.
