@@ -1,4 +1,5 @@
-What is @Transaction
+# @Transaction
+
 In the context of Spring Framework and Java Persistence Architecture (JPA), `@Transactional` is an annotation used to define the scope of a database transaction. It can be applied to methods or classes, and it instructs Spring to manage the transaction for the annotated method or class.
 
 Key points about the `@Transactional` annotation:
@@ -40,10 +41,7 @@ In this example, the `performTransactionalOperation` method is annotated with `@
 
 By using `@Transactional`, Spring simplifies the management of database transactions and provides a declarative way to control transactional behavior in your application.
 
-
-
-
-@Transactional (rollbackFor = NegativeWeightException.class , readOnly =  false, isolation = Isolation.READ_COMMITTED, propagation = Propagation.MANDATORY)
+@Transactional (rollbackFor = NegativeWeightException.class , readOnly = false, isolation = Isolation.READ_COMMITTED, propagation = Propagation.MANDATORY)
 
 The code snippet you provided contains the `@Transactional` annotation, which is commonly used in Spring applications to demarcate transactions. Here's an explanation of the various attributes used in this annotation:
 
